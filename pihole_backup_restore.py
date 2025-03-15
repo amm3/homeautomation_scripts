@@ -13,12 +13,10 @@ LOGGING_FORMAT = '%(asctime)s:%(levelname)s:%(message)s'
 
 API_BASE_PATH = 'api'    # Base path 
 API_SSL = False
-API_PORT = None     # If none, use default for schema
+API_PORT = None          # If none, use default for schema
 
 def main():
 
-    #global args
-    global CONFIG_FILE_DEFAULT
     parser = argparse.ArgumentParser(description='Manage PiHole Teleporter Backups')
     parser.add_argument('--host1', '-1', type=str, help="Host #1 (read from)", required=True)
     parser.add_argument('--host2', '-2', type=str, help="Host #2 (write to)", required=True)
@@ -171,7 +169,6 @@ def log_debug(msg):
 # Initial Setup and call to main()
 #
 if __name__ == '__main__':
-    sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 1)  # reopen STDOUT unbuffered
     try:
         sys.exit(main())
     except KeyboardInterrupt:
